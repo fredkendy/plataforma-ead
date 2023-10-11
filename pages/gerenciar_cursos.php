@@ -71,7 +71,7 @@
 
                                     <tr>
                                     <th scope="row"><?php echo $curso['id']; ?></th>
-                                    <td><img src="upload/<?php echo $curso['imagem']; ?>" height="50"></td>
+                                    <td><img src="<?php echo $curso['imagem']; ?>" height="50"></td>
                                     <td><?php echo $curso['titulo']; ?></td>
                                     <td>R$ <?php echo number_format($curso['preco'], 2, ',', '.'); ?> </td>
                                     <td><a href="index.php?p=editar_curso&id=<?php echo $curso['id']; ?>">Editar</a> | <a href="index.php?p=deletar_curso&id=<?php echo $curso['id']; ?>">Deletar</a></td>
