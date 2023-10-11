@@ -156,15 +156,57 @@
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="index.html">
+                                    <a href="logout.php">
                                         <span class="pcoded-micon"><i class="ti-arrow-left"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Sair</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                             </ul>
+
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Menu</div>
+
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="">
+                                    <a href="index.php">
+                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Página Inicial</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="index.php?p=gerenciar_cursos">
+                                        <span class="pcoded-micon"><i class="ti-bag"></i><b>D</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Gerenciar Cursos</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="index.php?p=gerenciar_usuarios">
+                                        <span class="pcoded-micon"><i class="ti-user"></i><b>D</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Gerenciar Usuários</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="index.php?p=relatorio">
+                                        <span class="pcoded-micon"><i class="ti-file"></i><b>D</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Relatório</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="logout.php">
+                                        <span class="pcoded-micon"><i class="ti-arrow-left"></i><b>D</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Sair</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+
                         </div>
                     </nav>
+
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
 
