@@ -106,10 +106,6 @@
                 </div>
             <?php } ?>
 
-            <div class="alert alert-danger" role="alert">
-                This is a danger alert-check!
-            </div>
-
             <div class="card">
                 <div class="card-header">
                     <h5>Formulário de Cadastro</h5>
@@ -150,7 +146,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <!-- JS para incluir href no botão, ou mudar de 'button' para 'a' -->
-                                <button type="button" onClick="location.href='index.php'" class="btn btn-primary btn-round"><i class="ti-arrow-left"></i> Voltar</button>
+                                <button type="button" onClick="location.href='index.php?p=gerenciar_cursos'" class="btn btn-primary btn-round"><i class="ti-arrow-left"></i> Voltar</button>
                                 <button type="submit" name="enviar" value="1" class="btn btn-success btn-round float-right"><i class="ti-save"></i> Salvar</button>
                             </div>
                         </div>
