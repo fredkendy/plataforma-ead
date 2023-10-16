@@ -1,6 +1,12 @@
 <?php
 
+var_dump($_SESSION);
+
     include("lib/conexao.php");
+
+    //Somente admin (1) tem acesso a essa página
+    include('lib/protect.php');
+    protect(1);
 
     $sql_usuarios = "SELECT * FROM usuarios";
     $sql_query = $mysqli->query($sql_usuarios) or die($mysqli->error);

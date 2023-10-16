@@ -2,6 +2,10 @@
 
     include("lib/conexao.php");
 
+    //Somente admin (1) tem acesso a essa página
+    include('lib/protect.php');
+    protect(1);
+
     $sql_cursos = "SELECT * FROM cursos";
     $sql_query = $mysqli->query($sql_cursos) or die($mysqli->error);
     $num_cursos = $sql_query->num_rows;

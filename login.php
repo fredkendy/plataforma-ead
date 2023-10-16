@@ -1,3 +1,33 @@
+<?php
+    $erro = false;
+
+    if (isset($_POST['email']) || isset($_POST['senha'])) {
+        
+        include('lib/conexao.php');
+        $email = $mysqli->escape_string($_POST['email']);
+        $senha = $mysqli->escape_string($_POST['senha']);
+
+        //Puxando os dados do usuário do banco de dados (primeiro o email, depois a senha)
+        $sql_query = $mysqli->query("SELECT * FROM usuarios WHERE email = '$email'") or die($mysqli->error);
+        $usuario = $sql_query->fetch_assoc(); 
+
+        if (password_verify($senha, $usuario['senha'])) {
+            if (!isset($_SESSION)) { 
+                session_start();
+            }
+            //Id do usuario
+            $_SESSION['usuario'] = $usuario['id'];
+            //Se ele é admin ou não (0/1)
+            $_SESSION['admin'] = $usuario['admin'];
+            header("Location: index.php");
+        } else {
+            $erro = "Senha inválida!";
+        }
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +87,7 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                     <div class="login-card card-block auth-body mr-auto ml-auto">
-                        <form class="md-float-material">
+                        <form method="POST" class="md-float-material">
                             <div class="text-center">
                                 <img src="assets/images/auth/logo-dark.png" alt="logo.png">
                             </div>
@@ -68,6 +98,13 @@
                                     </div>
                                 </div>
                                 <hr/>
+
+                                <?php if ($erro !== false) { ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?php echo $erro; ?>
+                                    </div>
+                                <?php } ?>
+
                                 <div class="input-group">
                                     <input type="email" name="email" class="form-control" placeholder="Digite seu email">
                                     <span class="md-line"></span>
@@ -83,7 +120,7 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Acessar</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Acessar</button>
                                     </div>
                                 </div>
                             </div>

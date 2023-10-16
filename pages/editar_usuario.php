@@ -3,6 +3,10 @@
     include("lib/conexao.php");
     include("lib/enviar_arquivo.php");
 
+    //Somente admin (1) tem acesso a essa página
+    include('lib/protect.php');
+    protect(1);
+
     $id = intval($_GET['id']);
 
     if (isset($_POST['enviar'])) {
@@ -13,6 +17,7 @@
         $creditos = $mysqli->escape_string($_POST['creditos']);
         $senha = $mysqli->escape_string($_POST['senha']); 
         $rsenha = $mysqli->escape_string($_POST['rsenha']); 
+        $admin = $mysqli->escape_string($_POST['admin']);
         
         $erro = array();
         if (empty($nome)) {
@@ -33,7 +38,8 @@
             $sql_code = "UPDATE usuarios SET 
                 nome = '$nome',
                 email = '$email',
-                creditos = '$creditos'
+                creditos = '$creditos',
+                admin = '$admin'
             WHERE id = '$id'";
 
             if(!empty($senha)) {
@@ -44,7 +50,8 @@
                 nome = '$nome',
                 email = '$email',
                 senha = '$senha',
-                creditos = '$creditos'
+                creditos = '$creditos',
+                admin = '$admin'
             WHERE id = '$id'";
             }
 
@@ -148,8 +155,11 @@ $usuario = $sql_query->fetch_assoc();
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="">Data de cadastro</label>
-                                    <input type="text" value="<?php echo $usuario['data_cadastro'] ?>" name="data_cadastro" class="form-control">
+                                    <label for="">Tipo</label>
+                                    <select name="admin" class="form-control">
+                                        <option value="0">Usuário</option>
+                                        <option <?php if($usuario['admin']) {echo 'selected';} ?> value="1">Admin</option>
+                                    </select>
                                 </div>
                             </div>
 

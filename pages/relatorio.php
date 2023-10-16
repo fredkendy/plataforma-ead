@@ -1,5 +1,9 @@
 <?php
 
+    //Somente admin (1) tem acesso a essa página
+    include('lib/protect.php');
+    protect(1);
+
     include("lib/conexao.php");
     // relatorio r (dando apelido); e explicando qual a relação entre elas (ex: id na tabela usuario = id_usuario da tabela relatorio)
     $sql_relatorios = "SELECT r.id, u.nome, c.titulo, r.data_compra, r.valor FROM relatorio r, usuarios u, cursos c WHERE u.id = r.id_usuario AND c.id = r.id_curso";

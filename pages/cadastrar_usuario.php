@@ -3,6 +3,10 @@
     include("lib/conexao.php");
     include("lib/enviar_arquivo.php");
 
+    //Somente admin (1) tem acesso a essa página
+    include('lib/protect.php');
+    protect(1);
+
     if (isset($_POST['enviar'])) {
         
         //escape_string para evitar SQL Injection
@@ -11,6 +15,7 @@
         $creditos = $mysqli->escape_string($_POST['creditos']);
         $senha = $mysqli->escape_string($_POST['senha']); 
         $rsenha = $mysqli->escape_string($_POST['rsenha']); 
+        $admin = $mysqli->escape_string($_POST['admin']);
         
         $erro = array();
         if (empty($nome)) {
@@ -34,12 +39,13 @@
             //Criptografar a senha
             $senha = password_hash($senha, PASSWORD_DEFAULT);
 
-            $mysqli->query("INSERT INTO usuarios (nome, email, senha, data_cadastro, creditos) VALUES (
+            $mysqli->query("INSERT INTO usuarios (nome, email, senha, data_cadastro, creditos, admin) VALUES (
                 '$nome',
                 '$email',
                 '$senha',
                 NOW(),
-                '$creditos'
+                '$creditos',
+                '$admin'
             )");
             die("<script>location.href='index.php?p=gerenciar_usuarios';</script>");
         }
@@ -123,16 +129,25 @@
                                 </div>
                             </div>
                             
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Senha</label>
                                     <input type="password" name="senha" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Repita a senha</label>
                                     <input type="password" name="rsenha" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Tipo</label>
+                                    <select name="admin" class="form-control">
+                                        <option value="0">Usuário</option>
+                                        <option value="1">Admin</option>
+                                    </select>
                                 </div>
                             </div>
 

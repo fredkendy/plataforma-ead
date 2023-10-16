@@ -3,6 +3,10 @@
     include("lib/conexao.php");
     include("lib/enviar_arquivo.php");
 
+    //Somente admin (1) tem acesso a essa página
+    include('lib/protect.php');
+    protect(1);
+
     // Pegar o id do curso para fazer o autocomplete dos campos
     $id = intval($_GET['id']); 
 
