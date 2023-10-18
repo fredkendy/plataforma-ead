@@ -113,11 +113,6 @@
                                     <input type="password" name="senha" class="form-control" placeholder="Digite sua senha">
                                     <span class="md-line"></span>
                                 </div>
-                                <div class="row m-t-25 text-left">
-                                    <div class="col-sm-12 col-xs-12 forgot-phone text-right">
-                                        <a href="resetar_senha.php" class="text-right f-w-600 text-inverse">Esqueci minha senha</a>
-                                    </div>
-                                </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Acessar</button>
